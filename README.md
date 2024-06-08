@@ -1,2 +1,107 @@
-# password-generator
-This script will generate a password that is 5 words long, made up of lowercase letters from the dictionary file. The words will be joined together with a hyphen, which makes the password more memorable.
+# Password Generator Script
+
+A simple bash script to generate a secure password by concatenating randomly selected words from the system dictionary with hyphens.
+
+## Overview
+
+This script creates a password by selecting a specified number of random words from the system dictionary and joining them with hyphens. It ensures the words are all lowercase and purely alphabetic.
+
+## Usage
+
+1. **Download the Script:**
+
+    Save the script to a file, e.g., `generate_password.sh`.
+
+2. **Make the Script Executable:**
+
+    ```bash
+    chmod +x generate_password.sh
+    ```
+
+3. **Run the Script:**
+
+    ```bash
+    ./generate_password.sh
+    ```
+
+## Script Details
+
+### Variable `WORDS`
+
+This variable sets the number of words to be included in the password. You can modify this value to generate a longer or shorter password.
+
+```bash
+WORDS=5
+```
+
+### Example Output
+
+```
+exciting-potato-parade-lazy-cat
+```
+
+### Explanation
+
+1. **Set the Number of Words:**
+
+    The script begins by setting the number of words to be included in the password:
+
+    ```bash
+    WORDS=5
+    ```
+
+2. **Select Random Words:**
+
+    It then selects the specified number of random words from the system dictionary, ensuring they are lowercase alphabetic words:
+
+    ```bash
+    words=$(grep -x '[a-z]*' /usr/share/dict/words | shuf --random-source=/dev/urandom -n "${WORDS}")
+    ```
+
+3. **Join Words with Hyphens:**
+
+    The selected words are concatenated with hyphens to form the password:
+
+    ```bash
+    password=$(echo "${words}" | paste -sd "-")
+    ```
+
+4. **Output the Password:**
+
+    Finally, the generated password is printed to the terminal:
+
+    ```bash
+    echo "$password"
+    ```
+
+## Customizing the Script
+
+- **Change the Number of Words:**
+
+    To generate a password with a different number of words, modify the `WORDS` variable:
+
+    ```bash
+    WORDS=7
+    ```
+
+## Dependencies
+
+- `grep`
+- `shuf`
+- `paste`
+
+Ensure these utilities are installed and available on your system.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request if you have any improvements or additional features to share.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Author
+
+[paintedman00](https://github.com/paintedman00)
+
+Feel free to reach out if you have any questions or suggestions!
