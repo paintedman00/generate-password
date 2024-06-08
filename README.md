@@ -10,18 +10,18 @@ This script creates a password by selecting a specified number of random words f
 
 1. **Download the Script:**
 
-    Save the script to a file, e.g., `generate_password.sh`.
+    Save the script to a file, e.g., `generate-password.sh`.
 
 2. **Make the Script Executable:**
 
     ```bash
-    chmod +x generate_password.sh
+    chmod +x generate-password.sh
     ```
 
 3. **Run the Script:**
 
     ```bash
-    ./generate_password.sh
+    ./generate-password.sh
     ```
 
 ## Script Details
